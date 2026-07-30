@@ -1,4 +1,4 @@
-# PQC Posture Portal
+# Tenable Cloud Security PQC Posture Portal
 
 A self-hosted web portal that shows **post-quantum cryptography readiness** for every internet-reachable resource in your cloud estate, using Tenable Cloud Security's native SSL/TLS PQC telemetry.
 
