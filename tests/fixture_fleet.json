@@ -1,0 +1,87 @@
+{
+ "hasMore": true,
+ "resultsList": [
+  {
+   "groupLevel": 0,
+   "queryIdToObjectMap": {
+    "aaaa1111-0000-0000-0000-000000000001": {
+     "queryId": "aaaa1111-0000-0000-0000-000000000001",
+     "propertyIdentifierToValueMap": {
+      "EntityName": "storefront-web",
+      "EntityTypeName": "GcpAppEngineApplicationService",
+      "Id": "//appengine.googleapis.com/apps/example-project/services/storefront-web"
+     }
+    },
+    "bbbb2222-0000-0000-0000-000000000002": {
+     "queryId": "bbbb2222-0000-0000-0000-000000000002",
+     "propertyIdentifierToValueMap": {
+      "NetworkEndpointHttpResponseTlsPqcStatus": "Ready",
+      "NetworkEndpointHost": "storefront-web-dot-example-project.ew.r.appspot.com",
+      "NetworkEndpointHttpResponseTlsKeyExchangeGroups": [
+       "Secp256R1",
+       "X25519",
+       "Mlkem1024",
+       "X25519Mlkem768"
+      ],
+      "Id": "NetworkEndpoint///appengine.../443/HTTPS/Get"
+     }
+    }
+   }
+  },
+  {
+   "groupLevel": 0,
+   "queryIdToObjectMap": {
+    "aaaa1111-0000-0000-0000-000000000001": {
+     "queryId": "aaaa1111-0000-0000-0000-000000000001",
+     "propertyIdentifierToValueMap": {
+      "EntityName": "storefront-web",
+      "EntityTypeName": "GcpAppEngineApplicationService",
+      "Id": "//appengine.googleapis.com/apps/example-project/services/storefront-web"
+     }
+    },
+    "bbbb2222-0000-0000-0000-000000000002": {
+     "queryId": "bbbb2222-0000-0000-0000-000000000002",
+     "propertyIdentifierToValueMap": {
+      "NetworkEndpointHttpResponseTlsPqcStatus": "Ready",
+      "NetworkEndpointHost": "20230109t184645-dot-storefront-web-dot-example-project.ew.r.appspot.com",
+      "NetworkEndpointHttpResponseTlsKeyExchangeGroups": [
+       "Secp256R1",
+       "X25519",
+       "Mlkem1024",
+       "X25519Mlkem768"
+      ],
+      "Id": "NetworkEndpoint///appengine.../v2/443/HTTPS/Get"
+     }
+    }
+   }
+  },
+  {
+   "groupLevel": 0,
+   "queryIdToObjectMap": {
+    "aaaa1111-0000-0000-0000-000000000001": {
+     "queryId": "aaaa1111-0000-0000-0000-000000000001",
+     "propertyIdentifierToValueMap": {
+      "EntityName": "batch-runner",
+      "EntityTypeName": "GcpComputeInstance",
+      "Id": "//compute.googleapis.com/projects/000000000000/zones/us-central1-c/instances/batch-runner"
+     }
+    },
+    "bbbb2222-0000-0000-0000-000000000002": {
+     "queryId": "bbbb2222-0000-0000-0000-000000000002",
+     "propertyIdentifierToValueMap": {
+      "NetworkEndpointHttpResponseTlsPqcStatus": "None",
+      "NetworkEndpointHost": "198.51.100.77",
+      "NetworkEndpointHttpResponseTlsKeyExchangeGroups": [
+       "Secp256R1",
+       "Secp384R1",
+       "X25519",
+       "X448",
+       "Ffdhe2048"
+      ],
+      "Id": "NetworkEndpoint///compute.../198.51.100.77/443/HTTPS/Get"
+     }
+    }
+   }
+  }
+ ]
+}

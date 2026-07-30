@@ -1,0 +1,101 @@
+{
+  "_comment": "Fleet query: exposed resources joined to their network endpoints, selecting the native PQC fields. Paginate with skip += page_size while hasMore.",
+  "_tool": "udm_execute_query",
+  "_requires_fields": [
+    "NetworkEndpointHttpResponseTlsPqcStatus",
+    "NetworkEndpointHttpResponseTlsKeyExchangeGroups"
+  ],
+  "query": {
+    "typeName": "UdmQuery",
+    "objectTypeName": "IEntity",
+    "id": "aaaa1111-0000-0000-0000-000000000001",
+    "groupLevel": 0,
+    "collapsed": false,
+    "objectResultHidden": false,
+    "timeZoneId": null,
+    "properties": [
+      { "identifier": "Id", "groupLevel": 0, "queryId": "aaaa1111-0000-0000-0000-000000000001", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "EntityName", "groupLevel": 0, "queryId": "aaaa1111-0000-0000-0000-000000000001", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "EntityTypeName", "groupLevel": 0, "queryId": "aaaa1111-0000-0000-0000-000000000001", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "EntityRegion", "groupLevel": 0, "queryId": "aaaa1111-0000-0000-0000-000000000001", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "EntityProviderConsoleUrl", "groupLevel": 0, "queryId": "aaaa1111-0000-0000-0000-000000000001", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "NetworkEndpointHttpResponseTlsPqcStatus", "groupLevel": 0, "queryId": "bbbb2222-0000-0000-0000-000000000002", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "NetworkEndpointHttpResponseTlsProtocol", "groupLevel": 0, "queryId": "bbbb2222-0000-0000-0000-000000000002", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "NetworkEndpointHttpResponseTlsCipherSuite", "groupLevel": 0, "queryId": "bbbb2222-0000-0000-0000-000000000002", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "NetworkEndpointHttpResponseTlsKeyExchangeGroups", "groupLevel": 0, "queryId": "bbbb2222-0000-0000-0000-000000000002", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "NetworkEndpointHttpResponseTlsCertificateExpirationTime", "groupLevel": 0, "queryId": "bbbb2222-0000-0000-0000-000000000002", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "NetworkEndpointHost", "groupLevel": 0, "queryId": "bbbb2222-0000-0000-0000-000000000002", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "NetworkEndpointPort", "groupLevel": 0, "queryId": "bbbb2222-0000-0000-0000-000000000002", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+      { "identifier": "NetworkEndpointProtocolType", "groupLevel": 0, "queryId": "bbbb2222-0000-0000-0000-000000000002", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null }
+    ],
+    "joins": [
+      {
+        "typeName": "UdmQueryJoin",
+        "id": "bbbb2222-0000-0000-0000-000000000002",
+        "propertyIdentifier": "NetworkDynamicAnalysisResourceNetworkEndpoints",
+        "type": "Inner",
+        "collapsed": false,
+        "objectResultHidden": false,
+        "joins": [],
+        "ruleGroup": {
+          "typeName": "UdmQueryRuleGroup",
+          "id": "dddd4444-0000-0000-0000-000000000004",
+          "name": "",
+          "operator": "And",
+          "collapsed": false,
+          "ignored": false,
+          "not": false,
+          "rules": [
+            {
+              "typeName": "UdmQueryRule",
+              "id": "cccc3333-0000-0000-0000-000000000003",
+              "operator": "IsEmpty",
+              "not": true,
+              "ignored": false,
+              "propertyIdentifier": "NetworkEndpointHttpResponseTlsPqcStatus",
+              "values": []
+            }
+          ]
+        }
+      }
+    ],
+    "ruleGroup": {
+      "typeName": "UdmQueryRuleGroup",
+      "id": "aaac8888-0000-0000-0000-000000000008",
+      "name": "",
+      "operator": "And",
+      "collapsed": false,
+      "ignored": false,
+      "not": false,
+      "rules": [
+        {
+          "typeName": "UdmQueryRelationRule",
+          "id": "aaab7777-0000-0000-0000-000000000007",
+          "relationPropertyIdentifier": "NetworkDynamicAnalysisResourceNetworkEndpoints",
+          "ignored": false,
+          "not": false,
+          "ruleGroup": {
+            "typeName": "UdmQueryRuleGroup",
+            "id": "ffff6666-0000-0000-0000-000000000006",
+            "name": "",
+            "operator": "And",
+            "collapsed": false,
+            "ignored": false,
+            "not": false,
+            "rules": [
+              {
+                "typeName": "UdmQueryRule",
+                "id": "eeee5555-0000-0000-0000-000000000005",
+                "operator": "IsEmpty",
+                "not": true,
+                "ignored": false,
+                "propertyIdentifier": "NetworkEndpointHttpResponseTlsPqcStatus",
+                "values": []
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,362 @@
+{
+ "generated_at": "2026-07-30T09:20:00Z",
+ "source": "Bundled demo data (synthetic)",
+ "environment": "demo",
+ "native_pqc": true,
+ "demo": true,
+ "sample": true,
+ "sample_note": "Synthetic sample data shipped with the portal so the dashboard is explorable before you connect. Hostnames use RFC 2606 / RFC 5737 reserved ranges and represent no real infrastructure. Connect your tenant to replace it.",
+ "endpoint_totals": {
+  "Ready": 46,
+  "None": 6,
+  "Enforced": 0,
+  "total": 52
+ },
+ "kex_profiles": [
+  {
+   "groups": [
+    "Secp256R1",
+    "X25519",
+    "Mlkem1024",
+    "X25519Mlkem768"
+   ],
+   "class": "hybrid",
+   "pqc": true,
+   "endpoints": 46
+  },
+  {
+   "groups": [
+    "Secp256R1",
+    "Secp384R1",
+    "Secp521R1",
+    "X25519",
+    "X448",
+    "Ffdhe2048",
+    "Ffdhe3072",
+    "Ffdhe4096",
+    "Ffdhe6144",
+    "Ffdhe8192"
+   ],
+   "class": "classical",
+   "pqc": false,
+   "endpoints": 5
+  },
+  {
+   "groups": [
+    "Secp256R1",
+    "Secp384R1",
+    "Secp521R1",
+    "X25519",
+    "X448"
+   ],
+   "class": "classical",
+   "pqc": false,
+   "endpoints": 1
+  }
+ ],
+ "cipher_suites": [
+  {
+   "name": "TLS_AES_128_GCM_SHA256",
+   "endpoints": 51
+  },
+  {
+   "name": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+   "endpoints": 1
+  }
+ ],
+ "resources": [
+  {
+   "id": "//appengine.googleapis.com/apps/example-project/services/storefront-web",
+   "name": "storefront-web",
+   "type": "GcpAppEngineApplicationService",
+   "provider": "GCP",
+   "region": "gcp-europe-west",
+   "pqc_status": "Ready",
+   "console": "https://console.cloud.google.com/appengine?project=example-project",
+   "endpoints": [
+    {
+     "host": "storefront-web-dot-example-project.ew.r.appspot.com",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "Ready",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "X25519",
+      "Mlkem1024",
+      "X25519Mlkem768"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "//appengine.googleapis.com/apps/example-project/services/default",
+   "name": "default",
+   "type": "GcpAppEngineApplicationService",
+   "provider": "GCP",
+   "region": "gcp-europe-west",
+   "pqc_status": "Ready",
+   "console": "https://console.cloud.google.com/appengine?project=example-project",
+   "endpoints": [
+    {
+     "host": "default-dot-example-project.ew.r.appspot.com",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "Ready",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "X25519",
+      "Mlkem1024",
+      "X25519Mlkem768"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "//appengine.googleapis.com/apps/example-project/services/reports-api",
+   "name": "reports-api",
+   "type": "GcpAppEngineApplicationService",
+   "provider": "GCP",
+   "region": "gcp-asia-northeast3",
+   "pqc_status": "Ready",
+   "console": "https://console.cloud.google.com/appengine?project=example-project",
+   "endpoints": [
+    {
+     "host": "reports-api-dot-example-project.ew.r.appspot.com",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "Ready",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "X25519",
+      "Mlkem1024",
+      "X25519Mlkem768"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "//appengine.googleapis.com/apps/example-project/services/checkout-svc",
+   "name": "checkout-svc",
+   "type": "GcpAppEngineApplicationService",
+   "provider": "GCP",
+   "region": "gcp-europe-west",
+   "pqc_status": "Ready",
+   "console": "https://console.cloud.google.com/appengine?project=example-project",
+   "endpoints": [
+    {
+     "host": "checkout-svc-dot-example-project.ew.r.appspot.com",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "Ready",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "X25519",
+      "Mlkem1024",
+      "X25519Mlkem768"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "//run.googleapis.com/projects/000000000000/locations/us-central1/services/orders-api",
+   "name": "orders-api",
+   "type": "GcpCloudRunService",
+   "provider": "GCP",
+   "region": "gcp-us-central1",
+   "pqc_status": "Ready",
+   "console": "https://console.cloud.google.com/run?project=example-project",
+   "endpoints": [
+    {
+     "host": "orders-api-example-uc.a.run.app",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "Ready",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "X25519",
+      "Mlkem1024",
+      "X25519Mlkem768"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "//run.googleapis.com/projects/000000000000/locations/us-central1/services/billing-worker",
+   "name": "billing-worker",
+   "type": "GcpCloudRunService",
+   "provider": "GCP",
+   "region": "gcp-us-central1",
+   "pqc_status": "Ready",
+   "console": "https://console.cloud.google.com/run?project=example-project",
+   "endpoints": [
+    {
+     "host": "billing-worker-example-uc.a.run.app",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "Ready",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "X25519",
+      "Mlkem1024",
+      "X25519Mlkem768"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "//run.googleapis.com/projects/000000000000/locations/us-central1/services/notify-fn",
+   "name": "notify-fn",
+   "type": "GcpCloudRunService",
+   "provider": "GCP",
+   "region": "gcp-us-central1",
+   "pqc_status": "Ready",
+   "console": "https://console.cloud.google.com/run?project=example-project",
+   "endpoints": [
+    {
+     "host": "notify-fn-example-uc.a.run.app",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "Ready",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "X25519",
+      "Mlkem1024",
+      "X25519Mlkem768"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "//run.googleapis.com/projects/000000000000/locations/us-central1/services/search-api",
+   "name": "search-api",
+   "type": "GcpCloudRunService",
+   "provider": "GCP",
+   "region": "gcp-us-central1",
+   "pqc_status": "Ready",
+   "console": "https://console.cloud.google.com/run?project=example-project",
+   "endpoints": [
+    {
+     "host": "search-api-example-uc.a.run.app",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "Ready",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "X25519",
+      "Mlkem1024",
+      "X25519Mlkem768"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "arn:aws:ec2:us-east-1:000000000000:instance/i-0example1111aaaa",
+   "name": "legacy-edge-proxy",
+   "type": "AwsEc2Instance",
+   "provider": "AWS",
+   "region": "aws-us-east-1",
+   "pqc_status": "None",
+   "console": "https://console.aws.amazon.com/ec2/home?region=us-east-1",
+   "endpoints": [
+    {
+     "host": "203.0.113.24",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "None",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "Secp384R1",
+      "Secp521R1",
+      "X25519",
+      "X448",
+      "Ffdhe2048",
+      "Ffdhe3072",
+      "Ffdhe4096",
+      "Ffdhe6144",
+      "Ffdhe8192"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "//compute.googleapis.com/projects/000000000000/zones/us-central1-c/instances/batch-runner",
+   "name": "batch-runner",
+   "type": "GcpComputeInstance",
+   "provider": "GCP",
+   "region": "gcp-us-central1-c",
+   "pqc_status": "None",
+   "console": "https://console.cloud.google.com/compute?project=example-project",
+   "endpoints": [
+    {
+     "host": "198.51.100.77",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls13",
+     "pqc": "None",
+     "cipher": "TLS_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "Secp384R1",
+      "Secp521R1",
+      "X25519",
+      "X448",
+      "Ffdhe2048",
+      "Ffdhe3072",
+      "Ffdhe4096",
+      "Ffdhe6144",
+      "Ffdhe8192"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ocid1.loadbalancer.oc1.iad.aaaaaaaaexample",
+   "name": "shared-load-balancer",
+   "type": "OciLoadBalancingLoadBalancer",
+   "provider": "OCI",
+   "region": "oci-us-ashburn-1",
+   "pqc_status": "None",
+   "console": "https://cloud.oracle.com/load-balancer",
+   "endpoints": [
+    {
+     "host": "192.0.2.140",
+     "port": 443,
+     "protocol": "HTTPS",
+     "tls": "Tls12",
+     "pqc": "None",
+     "cipher": "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+     "kex": [
+      "Secp256R1",
+      "Secp384R1",
+      "Secp521R1",
+      "X25519",
+      "X448",
+      "Ffdhe2048",
+      "Ffdhe3072",
+      "Ffdhe4096",
+      "Ffdhe6144",
+      "Ffdhe8192"
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Local screenshots
+shot_*.png
+
+# NEVER commit credentials or local state, even if someone points
+# --data-dir at the repo directory.
+instance.key
+config.json
+cache.json
+system-ca.pem
+.pqc-portal/
