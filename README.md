@@ -13,6 +13,31 @@ dialog: paste a Cloud Security service account token, click **Save & test**, and
 syncs your tenant. Until you do, it serves a small bundled demo snapshot that is
 clearly labelled as such.
 
+## Screenshots
+
+The dashboard opens first: readiness ratio, one diamond per endpoint, and the widget
+grid.
+
+![PQC posture dashboard](docs/dashboard.png)
+
+The resource inventory is filterable by name, cloud, region and verdict.
+
+![Resource inventory](docs/resources.png)
+
+Clicking any resource opens the cryptographic drill-down. Here a classical-only host —
+every offered key-exchange group is an elliptic curve or FFDHE, none post-quantum, which
+is exactly why it scores Not quantum-safe.
+
+![Resource drill-down](docs/drilldown.png)
+
+On first run you paste a service account token. Certificate trust is resolved from your
+OS store automatically; the panel is there for when it needs a hand.
+
+![Connection and certificate trust](docs/connection.png)
+
+> Screenshots show the bundled synthetic demo data. Hostnames and addresses use RFC 2606
+> and RFC 5737 reserved ranges and represent no real infrastructure.
+
 ## Why this exists
 
 Every TLS endpoint you expose today negotiates a key exchange. If that key exchange is classical — ECDHE, DHE, RSA — it is breakable by Shor's algorithm on a sufficiently capable quantum computer. That matters *now*, not later: an adversary can record encrypted traffic today and decrypt it once such a machine exists. This is the **harvest-now, decrypt-later** problem, and it is the reason NIST standardised ML-KEM and regulators have begun asking for migration plans.
