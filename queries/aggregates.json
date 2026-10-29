@@ -62,7 +62,7 @@
   },
   "cipher_suites": {
     "_widget": "Negotiated Cipher Suites",
-    "_requires_fields": ["NetworkEndpointHttpResponseTlsCipherSuite"],
+    "_requires_fields": ["NetworkEndpointHttpResponseTlsCipherSuites"],
     "query": {
       "typeName": "UdmQuery",
       "objectTypeName": "NetworkEndpoint",
@@ -73,7 +73,7 @@
       "timeZoneId": null,
       "joins": [],
       "properties": [
-        { "identifier": "NetworkEndpointHttpResponseTlsCipherSuite", "groupLevel": 1, "queryId": "a1b2c3d4-0000-0000-0000-000000000001", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+        { "identifier": "NetworkEndpointHttpResponseTlsCipherSuites", "groupLevel": 1, "queryId": "a1b2c3d4-0000-0000-0000-000000000001", "aggregation": null, "sort": null, "startOfWeek": null, "transform": "CollectionSplit" },
         { "identifier": "Id", "groupLevel": 0, "queryId": "a1b2c3d4-0000-0000-0000-000000000001", "aggregation": "ValueCount", "sort": { "direction": "Descending", "ordinal": 0 }, "startOfWeek": null, "transform": null }
       ],
       "ruleGroup": {
@@ -85,14 +85,14 @@
         "ignored": false,
         "not": false,
         "rules": [
-          { "typeName": "UdmQueryRule", "id": "c3d4e5f6-0000-0000-0000-000000000003", "operator": "IsEmpty", "not": true, "ignored": false, "propertyIdentifier": "NetworkEndpointHttpResponseTlsCipherSuite", "values": [] }
+          { "typeName": "UdmQueryRule", "id": "c3d4e5f6-0000-0000-0000-000000000003", "operator": "IsEmpty", "not": true, "ignored": false, "propertyIdentifier": "NetworkEndpointHttpResponseTlsCipherSuites", "values": [] }
         ]
       }
     }
   },
   "protocols": {
     "_widget": "TLS Protocol Distribution",
-    "_requires_fields": ["NetworkEndpointHttpResponseTlsProtocol"],
+    "_requires_fields": ["NetworkEndpointHttpResponseTlsProtocols"],
     "query": {
       "typeName": "UdmQuery",
       "objectTypeName": "NetworkEndpoint",
@@ -103,7 +103,7 @@
       "timeZoneId": null,
       "joins": [],
       "properties": [
-        { "identifier": "NetworkEndpointHttpResponseTlsProtocol", "groupLevel": 1, "queryId": "1a000000-0000-0000-0000-0000000000a1", "aggregation": null, "sort": null, "startOfWeek": null, "transform": null },
+        { "identifier": "NetworkEndpointHttpResponseTlsProtocols", "groupLevel": 1, "queryId": "1a000000-0000-0000-0000-0000000000a1", "aggregation": null, "sort": null, "startOfWeek": null, "transform": "CollectionSplit" },
         { "identifier": "Id", "groupLevel": 0, "queryId": "1a000000-0000-0000-0000-0000000000a1", "aggregation": "ValueCount", "sort": { "direction": "Descending", "ordinal": 0 }, "startOfWeek": null, "transform": null }
       ],
       "ruleGroup": {
@@ -115,7 +115,7 @@
         "ignored": false,
         "not": false,
         "rules": [
-          { "typeName": "UdmQueryRule", "id": "2b000000-0000-0000-0000-0000000000b2", "operator": "IsEmpty", "not": true, "ignored": false, "propertyIdentifier": "NetworkEndpointHttpResponseTlsProtocol", "values": [] }
+          { "typeName": "UdmQueryRule", "id": "2b000000-0000-0000-0000-0000000000b2", "operator": "IsEmpty", "not": true, "ignored": false, "propertyIdentifier": "NetworkEndpointHttpResponseTlsProtocols", "values": [] }
         ]
       }
     }

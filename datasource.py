@@ -268,6 +268,14 @@ class McpDataSource:
         """
         if result is None:
             return None
+        if isinstance(result, dict) and result.get("isError"):
+            # A rejected query (unknown field, bad operator) comes back as a
+            # tool error, not a JSON-RPC error. Surface it instead of letting
+            # it parse as an empty result set.
+            texts = [b.get("text", "") for b in result.get("content") or []
+                     if isinstance(b, dict)]
+            raise McpError("Tool error: " + ("; ".join(t for t in texts if t)
+                                             or "query rejected by server"))
         if isinstance(result, dict) and "structuredContent" in result:
             return result["structuredContent"]
         blocks = (result or {}).get("content") if isinstance(result, dict) else None
@@ -295,10 +303,36 @@ class McpDataSource:
         try:
             meta = self.call_tool("udm_get_object_type_metadata",
                                   {"objectTypeName": "NetworkEndpoint"})
+            blob = json.dumps(meta) if not isinstance(meta, str) else meta
+            if all(field in blob for field in PQC_FIELDS):
+                return True
+        except McpError:
+            pass
+        # The metadata tool can fail on some tenants even though the fields
+        # exist. Probe directly: a count query that selects the PQC fields is
+        # rejected by the server if any of them is unknown.
+        return self._probe_fields(PQC_FIELDS)
+
+    def _probe_fields(self, fields):
+        qid = "0f0f0f0f-0000-0000-0000-000000000001"
+        query = {
+            "typeName": "UdmQuery", "objectTypeName": "NetworkEndpoint",
+            "id": qid, "groupLevel": 0, "collapsed": False,
+            "objectResultHidden": False, "timeZoneId": None, "joins": [],
+            "properties": [{"identifier": f, "groupLevel": 0, "queryId": qid,
+                            "aggregation": None, "sort": None,
+                            "startOfWeek": None, "transform": None}
+                           for f in fields],
+            "ruleGroup": {"typeName": "UdmQueryRuleGroup",
+                          "id": "0f0f0f0f-0000-0000-0000-000000000002",
+                          "name": "", "operator": "And", "collapsed": False,
+                          "ignored": False, "not": False, "rules": []},
+        }
+        try:
+            self.count(query)
+            return True
         except McpError:
             return False
-        blob = json.dumps(meta) if not isinstance(meta, str) else meta
-        return all(field in blob for field in PQC_FIELDS)
 
     # -- queries -----------------------------------------------------------
 
@@ -464,6 +498,17 @@ def _as_list(value):
     return [value]
 
 
+PROTOCOL_ORDER = ["Ssl20", "Ssl30", "Tls10", "Tls11", "Tls12", "Tls13"]
+
+
+def _weakest_protocol(protocols):
+    """Lowest TLS version an endpoint offers, so weak-protocol checks see it."""
+    known = [p for p in protocols if p in PROTOCOL_ORDER]
+    if known:
+        return min(known, key=PROTOCOL_ORDER.index)
+    return protocols[0] if protocols else ""
+
+
 def build_snapshot(rows, native, aggregates, environment="", url=""):
     """Assemble the snapshot document the UI consumes.
 
@@ -492,13 +537,21 @@ def build_snapshot(rows, native, aggregates, environment="", url=""):
             order.append(rid)
 
         kex = _as_list(row.get("NetworkEndpointHttpResponseTlsKeyExchangeGroups"))
+        # Current tenants expose TlsProtocols / TlsCipherSuites (lists); older
+        # builds exposed singular TlsProtocol / TlsCipherSuite. Accept both.
+        protocols = _as_list(row.get("NetworkEndpointHttpResponseTlsProtocols")
+                             or row.get("NetworkEndpointHttpResponseTlsProtocol"))
+        ciphers = _as_list(row.get("NetworkEndpointHttpResponseTlsCipherSuites")
+                           or row.get("NetworkEndpointHttpResponseTlsCipherSuite"))
         endpoint = {
             "host": row.get("NetworkEndpointHost") or "",
             "port": row.get("NetworkEndpointPort"),
             "protocol": row.get("NetworkEndpointProtocolType") or "",
-            "tls": row.get("NetworkEndpointHttpResponseTlsProtocol") or "",
+            "tls": _weakest_protocol(protocols),
+            "protocols": protocols,
             "pqc": row.get("NetworkEndpointHttpResponseTlsPqcStatus") or None,
-            "cipher": row.get("NetworkEndpointHttpResponseTlsCipherSuite") or "",
+            "cipher": ciphers[0] if ciphers else "",
+            "ciphers": ciphers,
             "kex": kex,
             "cert_expires": row.get(
                 "NetworkEndpointHttpResponseTlsCertificateExpirationTime") or "",
